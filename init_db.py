@@ -1,9 +1,9 @@
 import sqlite3
 # from tkinter import INSERT
-from variables import URL
+from variables import DN_NAME
 from faker import Faker 
 
-connection = sqlite3.connect(URL)
+connection = sqlite3.connect(DN_NAME)
 
 with open("schema.sql") as file:
     connection.executescript(file.read())

@@ -11,6 +11,8 @@ pipenv==2022.7.4
 platformdirs==2.5.2
 python-dateutil==2.8.2
 six==1.16.0
+SQLAlchemy==1.4.39
 virtualenv==20.15.1
 virtualenv-clone==0.5.7
 Werkzeug==2.1.2
+yapf==0.32.0
