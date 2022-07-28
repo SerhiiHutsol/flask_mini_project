@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{%block title%} List of books {%endblock%}
+
+{%block container %}
+    <h1> Search book</h1>
+    {% for book in books1 %}
+        <a href= "{{ url_for("search_book", books1 = book [ "id" ] ) }}">
+            <h3> {{ book ['title'] }} - {{ book ['author'] }}</h3>
+        </a>
+        <span class="badge text-bg-secondary">{{book['created']}}</span>
+        <hr>
+    {%endfor%}
+{%endblock%}
