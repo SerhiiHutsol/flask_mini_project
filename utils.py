@@ -1,6 +1,7 @@
 
 from models import Book
 from werkzeug.exceptions import abort
+import requests
  
 
 # def get_book(book_id, connection):
@@ -30,3 +31,20 @@ def one_name( session, model):
     result = session.query(model).all()
     for i in result:
         print('title ;', i.title )
+
+def search_btc(mark):
+    response = requests.get('https://bitpay.com/api/rates')
+    data = response.json()
+    for i in range(len(data)):
+        a = data[i]
+        a.get('code')
+        # print(a)
+        if a.get('code').lower() == mark.lower():
+            res = a.get('rate')
+            res1 = a.get('name')
+            return f'{res} {res1}'
+        # else:
+        #     return print(f'Not found {mark}')
+    
+
+# print(search_btc('BND'))

@@ -1,7 +1,7 @@
 from flask import render_template, request,redirect, url_for
 from app import db, app
 from models import Book
-from utils import get_book
+from utils import get_book,search_btc
 
 from sqlalchemy import or_
 from webargs import fields
@@ -138,5 +138,18 @@ def search_book(value):
 
     return render_template('books/search.html', books1 = books_in)
 
+@app.route('/rates')
+@use_kwargs(
+    {
+        "code": fields.Str(required=True)
+    },
+    location = 'query'
+)
+def currency_btc(code):
+    x = search_btc(code)
+
+    return render_template('index.html',x = x)
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000) 
+
